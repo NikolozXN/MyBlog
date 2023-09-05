@@ -2,12 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Post;
-use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +20,7 @@ class StorePostRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
-    public function rules(Post $post): array
+    public function rules(): array
     {
         return [
             'title' => 'required|max:70',

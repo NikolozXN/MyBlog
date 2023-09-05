@@ -31,7 +31,7 @@
         </div>
         <div class="mb-3">
             <select name="category_id" id="category_id" style="width: 12rem; height: 2rem">
-                @foreach (\App\Models\Category::all() as $category)
+                @foreach (\App\Models\Post::category as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
 

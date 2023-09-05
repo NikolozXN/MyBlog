@@ -10,14 +10,14 @@
         </div>
     </td>
     <td>
-        <p class="fw-normal mb-1">{{ $post->title }}</p>
+        <a href="{{ route('posts.show', $post->slug) }}" class="fw-normal mb-1">{{ $post->title }}</a>
         <p class="text-muted mb-0">Last updated {{ $post->updated_at->diffForHumans() }}</p>
     </td>
     <td>
         <a href="{{ route('posts.delete') }}" class="btn btn-link btn-sm btn-rounded">
             Delete
         </a>
-        <a href="{{ route('posts.edit', $post->slug) }}" class="btn btn-link btn-sm btn-rounded">
+        <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-link btn-sm btn-rounded">
             Edit
         </a>
     </td>

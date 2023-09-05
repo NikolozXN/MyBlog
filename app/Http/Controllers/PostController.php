@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 use function Laravel\Prompts\select;
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdateRequest;
 
 class PostController extends Controller
 {
@@ -44,7 +45,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePostRequest $request, Post $post)
+    public function store(StorePostRequest $request)
     {
         $validated = $request->validated();
 
@@ -81,16 +82,23 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.edit');
+        return view('posts.edit', [
+            'post' => $post,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    public function update(UpdateRequest $request, Post $post)
     {
-        //
+
+        $validatedFields = $request->validated();
+        if ($request->hasFile('image')) {
+            $validatedFields['image'] = $request->file('image')->store('images', 'public');
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.

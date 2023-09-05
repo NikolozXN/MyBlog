@@ -31,14 +31,14 @@ Route::controller(PostController::class)->group(function () {
 
             Route::post('/posts', 'store')->name('posts.store');
 
-            Route::get('/{post:slug}/edit', 'edit')->name('posts.edit');
+            Route::get('/{post}/edit', 'edit')->name('posts.edit');
 
-            Route::patch('/update', 'update')->name('posts.update');
+            Route::put('/update', 'update')->name('posts.update');
 
             Route::post('/delete', 'destroy')->name('posts.delete');
         });
         // Route::middleware(['guest'])->group(function () {
-        Route::get('posts/{post:slug}', 'show')->name('posts.show');
+        Route::get('{post:slug}', 'show')->name('posts.show');
         // });
     });
 });
